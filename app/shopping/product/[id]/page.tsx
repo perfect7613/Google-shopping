@@ -54,14 +54,14 @@ async function ProductPage({ params: { id }} : Props) {
             <div className="flex flex-col justify-between">
               {productData.content.images?.full_size
                 .slice(1, 3)
-                .map((image) => (
-                  <img src={image} alt="" className="w-[9.5rem] h-[9.5rem] object-contain border rounded-md" />
+                .map((image, i) => (
+                  <img key={i} src={image} alt="" className="w-[9.5rem] h-[9.5rem] object-contain border rounded-md" />
                 ))}
             </div>
           </div>
           <div className="flex space-x-6 overflow-x-scroll py-2 md:w-[30rem]">
-            {productData.content.images?.full_size.slice(3).map((image) => (
-              <img src={image} alt="" className="w-20 h-20 object-contain" />
+            {productData.content.images?.full_size.slice(3).map((image, i) => (
+              <img key={i} src={image} alt="" className="w-20 h-20 object-contain" />
             ))}
           </div>
         </div>
@@ -108,7 +108,7 @@ async function ProductPage({ params: { id }} : Props) {
                 <hr />
                 <ul className="space-y-2">
                   {productData.content.highlights?.map((highlight) => (
-                    <li className="list-desc">{highlight}</li>
+                    <li key={highlight} className="list-desc">{highlight}</li>
                   ))}
                 </ul>
               </div>
@@ -152,7 +152,7 @@ async function ProductPage({ params: { id }} : Props) {
                   }
                 </div>
 
-                <p>"{productData.content.reviews.top_review.text}"</p>
+                <p>{productData.content.reviews.top_review.text}</p>
               </div>
             )}
 
@@ -161,7 +161,7 @@ async function ProductPage({ params: { id }} : Props) {
           <div>
             <h3 className="font-bold text-2xl">Reviews</h3>
 
-            <h4 className="text-lg italic">No Review's Yet</h4>
+            <h4 className="text-lg italic">No Reviews Yet</h4>
           </div>
         )}
       </section>
